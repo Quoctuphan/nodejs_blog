@@ -18,8 +18,13 @@ app.set('view engine', 'hbs');
 app.set('views', path.join(__dirname, 'resources/views'));
 
 const route = require('./routes');
+const db = require('./config/db');
+const { connect } = require('http2');
+
+//Connect mongodb
+db.connect()
 route(app);
 
-      app.listen(port, () => {
-         console.log(`Example app listening on port ${port}`);
+  app.listen(port, () => {
+    console.log(`Example app listening on port ${port}`);
 });
